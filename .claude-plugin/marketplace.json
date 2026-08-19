@@ -15,6 +15,15 @@
       },
       "category": "productivity",
       "source": "./plugins/ember-foundation-substrate-toolkit"
+    },
+    {
+      "name": "corpus-pattern-pipeline",
+      "description": "Two chained pipelines that turn a large body of private source material into a validated, sourced, publication-ready document: corpus-mining (per-source extraction → cross-source pattern candidates → adversarial evaluation) and document-assembly (strip internal tracking artifacts, sanitize private references, developmental + line edit, render, proofread).",
+      "author": {
+        "name": "Sara LaFleur"
+      },
+      "category": "productivity",
+      "source": "./plugins/corpus-pattern-pipeline"
     }
   ]
 }

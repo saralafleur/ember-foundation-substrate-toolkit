@@ -1,8 +1,10 @@
 # ember-foundation-substrate-toolkit
 
-Ember Foundation Substrate's idea-evaluation pipeline for Claude Code, packaged
-as an installable plugin: three chained virtual teams that take a product idea
-from question to plan.
+A Claude Code plugin marketplace with two independent plugins.
+
+## ember-foundation-substrate-toolkit — idea-evaluation pipeline
+
+Three chained virtual teams that take a product idea from question to plan.
 
 | Skill | Question it answers | Output |
 |---|---|---|
@@ -12,6 +14,20 @@ from question to plan.
 
 See [the plugin's README](plugins/ember-foundation-substrate-toolkit/README.md)
 for how the chain works and the full agent roster.
+
+## corpus-pattern-pipeline — private-corpus mining and document assembly
+
+Two chained pipelines: turn a large body of private source material into
+validated, sourced findings, then assemble those findings into a polished,
+sanitized document.
+
+| Skill | Question it answers | Output |
+|---|---|---|
+| `corpus-mining` | What does this corpus actually teach, and is it real or a single anecdote? | `<output-dir>/findings.md` — validated, sourced candidate patterns |
+| `document-assembly` | How do I turn validated findings into something publishable? | `<output-dir>/manuscript/` — clean, sanitized, house-style-edited, rendered document |
+
+See [the plugin's README](plugins/corpus-pattern-pipeline/README.md) for the
+privacy boundary this pipeline is built around and the full agent roster.
 
 ## Install (Claude Code)
 
@@ -27,10 +43,11 @@ Or from a local clone:
 /plugin marketplace add /path/to/ember-foundation-substrate-toolkit
 ```
 
-**2. Install the plugin:**
+**2. Install a plugin:**
 
 ```
 /plugin install ember-foundation-substrate-toolkit@ember-foundation-substrate
+/plugin install corpus-pattern-pipeline@ember-foundation-substrate
 ```
 
 **3. Reload** — run `/reload-plugins` to activate immediately, or restart your
@@ -38,8 +55,13 @@ Claude Code session.
 
 ## Maintaining
 
-The working copies live in the maintainer's `~/.claude/skills` and
-`~/.claude/agents`; this repo is the packaged distribution. Run
-`python3 scripts/sync-from-local.py` to re-import them (applies the
-experimental banner, sanitizes personal wording, never ships memory), review
-`git diff`, then push.
+**`ember-foundation-substrate-toolkit`**: the working copies live in the
+maintainer's `~/.claude/skills` and `~/.claude/agents`; this repo is the
+packaged distribution. Run `python3 scripts/sync-from-local.py` to re-import
+them (applies the experimental banner, sanitizes personal wording, never
+ships memory), review `git diff`, then push.
+
+**`corpus-pattern-pipeline`**: hand-maintained directly in this repo — it
+was genericized from a project-scoped (not `~/.claude`-global) pipeline, so
+`sync-from-local.py` doesn't touch it. Edit its files under
+`plugins/corpus-pattern-pipeline/` directly, review `git diff`, then push.
